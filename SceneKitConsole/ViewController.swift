@@ -1,14 +1,10 @@
-//
-//  ViewController.swift
-//  SceneKitConsole
-//
-//  Created by Mulang Su on 2018/02/13.
-//  Copyright © 2018年 Mulang Su. All rights reserved.
-//
-
 import UIKit
+import SceneKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet var textField: UITextField!
+    @IBOutlet var sceneView: SCNView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
