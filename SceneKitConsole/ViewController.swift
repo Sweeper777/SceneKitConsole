@@ -1,21 +1,23 @@
 import UIKit
 import SceneKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var textField: UITextField!
     @IBOutlet var sceneView: SCNView!
+    
+    var console: SceneKitConsole!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        textField.delegate = self
+        console = SceneKitConsole(attachTo: sceneView)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        console.run(command: textField.text!)
+        return true
     }
-
-
 }
 
