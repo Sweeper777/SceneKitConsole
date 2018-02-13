@@ -12,6 +12,7 @@
 		5A6723152032F461001DDD14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A6723132032F461001DDD14 /* Main.storyboard */; };
 		5A6723172032F461001DDD14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A6723162032F461001DDD14 /* Assets.xcassets */; };
 		5A67231A2032F461001DDD14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A6723182032F461001DDD14 /* LaunchScreen.storyboard */; };
+		5A6723222032F73A001DDD14 /* SceneKitConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6723212032F73A001DDD14 /* SceneKitConsole.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		5A6723162032F461001DDD14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A6723192032F461001DDD14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5A67231B2032F461001DDD14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A6723212032F73A001DDD14 /* SceneKitConsole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitConsole.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				5A67230F2032F461001DDD14 /* AppDelegate.swift */,
 				5A6723112032F461001DDD14 /* ViewController.swift */,
+				5A6723212032F73A001DDD14 /* SceneKitConsole.swift */,
 				5A6723132032F461001DDD14 /* Main.storyboard */,
 				5A6723162032F461001DDD14 /* Assets.xcassets */,
 				5A6723182032F461001DDD14 /* LaunchScreen.storyboard */,
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A6723222032F73A001DDD14 /* SceneKitConsole.swift in Sources */,
 				5A6723122032F461001DDD14 /* ViewController.swift in Sources */,
 				5A6723102032F461001DDD14 /* AppDelegate.swift in Sources */,
 			);
