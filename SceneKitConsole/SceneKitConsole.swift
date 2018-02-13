@@ -6,4 +6,8 @@ class SceneKitConsole {
     init(attachTo sceneView: SCNView) {
         self.sceneView = sceneView
     }
+    
+    func run(command: String) {
+        
+    }
 }
