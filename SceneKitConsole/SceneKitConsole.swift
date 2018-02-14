@@ -11,6 +11,13 @@ class SceneKitConsole {
         
     }
 }
+
+struct Command {
+    let name: String
+    let subcommands: [Command] = []
+    let action: (SCNView, String...) -> Void
+}
+
 class CommandProvider {
     
 }
