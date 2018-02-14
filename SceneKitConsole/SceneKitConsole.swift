@@ -2,9 +2,11 @@ import SceneKit
 
 class SceneKitConsole {
     let sceneView: SCNView
+    let commandProvider: CommandProvider
     
-    init(attachTo sceneView: SCNView) {
+    init(attachTo sceneView: SCNView, commandProvider: CommandProvider) {
         self.sceneView = sceneView
+        self.commandProvider = commandProvider
     }
     
     func run(command: String) {
