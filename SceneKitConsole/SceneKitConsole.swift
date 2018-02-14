@@ -21,8 +21,9 @@ enum CommandResult {
 
 struct Command {
     let name: String
-    let subcommands: [Command] = []
-    let action: (SCNView, String...) -> Void
+    let argumentCount: Int?
+    let subcommands: [Command]
+    let action: (SCNView, [String]) -> CommandResult
 }
 
 class CommandProvider {
