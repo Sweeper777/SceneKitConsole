@@ -32,4 +32,15 @@ class CommandProvider {
         self.commands = commands
     }
     
+    class Builder {
+        var commands: [Command] = []
+        
+        func addCommand(_ command: Command) -> Builder {
+            commands.append(command)
+            return self
+        }
+        func build() -> CommandProvider {
+            return CommandProvider(commands: commands)
+        }
+    }
 }
