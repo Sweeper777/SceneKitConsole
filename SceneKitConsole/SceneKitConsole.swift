@@ -14,6 +14,11 @@ class SceneKitConsole {
     }
 }
 
+enum CommandResult {
+    case ok
+    case error(String)
+}
+
 struct Command {
     let name: String
     let subcommands: [Command] = []
