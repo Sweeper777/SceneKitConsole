@@ -27,5 +27,9 @@ struct Command {
 }
 
 class CommandProvider {
+    let commands: [Command]
+    private init(commands: [Command]) {
+        self.commands = commands
+    }
     
 }
