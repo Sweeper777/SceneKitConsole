@@ -11,3 +11,6 @@ class SceneKitConsole {
         
     }
 }
+class CommandProvider {
+    
+}
