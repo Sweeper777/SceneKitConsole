@@ -50,6 +50,10 @@ class CommandProvider {
             let spawnBox = Command(name: "box", argumentCount: 5, subcommands: []){ (view, args) -> CommandResult in
                 return .ok
             }
+            
+            let spawnSphere = Command(name: "sphere", argumentCount: 2, subcommands: []) { (view, args) -> CommandResult in
+                return .ok
+            }
             return self
         }
         
