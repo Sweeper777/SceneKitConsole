@@ -54,6 +54,10 @@ class CommandProvider {
             let spawnSphere = Command(name: "sphere", argumentCount: 2, subcommands: []) { (view, args) -> CommandResult in
                 return .ok
             }
+            
+            let spawn = Command(name: "spawn", argumentCount: nil, subcommands: [spawnBox, spawnSphere], action:
+                {(_,_) in return .error(Command.missingArguments)})
+            _ = addCommand(spawn)
             return self
         }
         
