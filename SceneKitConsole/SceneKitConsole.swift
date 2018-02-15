@@ -47,6 +47,9 @@ class CommandProvider {
         }
         
         func addStandardCommands() -> Builder {
+            let spawnBox = Command(name: "box", argumentCount: 5, subcommands: []){ (view, args) -> CommandResult in
+                return .ok
+            }
             return self
         }
         
