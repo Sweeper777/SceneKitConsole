@@ -39,6 +39,11 @@ class CommandProvider {
             commands.append(command)
             return self
         }
+        
+        func addStandardCommands() -> Builder {
+            return self
+        }
+        
         func build() -> CommandProvider {
             return CommandProvider(commands: commands)
         }
