@@ -17,6 +17,7 @@ class SceneKitConsole {
 enum CommandResult {
     case ok
     case error(String)
+    case output(String)
 }
 
 struct Command {
