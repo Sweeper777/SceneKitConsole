@@ -25,6 +25,11 @@ struct Command {
     let argumentCount: Int?
     let subcommands: [Command]
     let action: (SCNView, [String]) -> CommandResult
+    
+    fileprivate static let invalidArguments = "Aguments are invalid!"
+    fileprivate static let missingArguments = "Arguments expected!"
+    fileprivate static let cannotFindNode = "Cannot find the node specified!"
+    fileprivate static let invalidCommand = "Unknown command!"
 }
 
 class CommandProvider {
