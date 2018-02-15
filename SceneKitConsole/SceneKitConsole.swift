@@ -48,6 +48,16 @@ class CommandProvider {
         
         func addStandardCommands() -> Builder {
             let spawnBox = Command(name: "box", argumentCount: 5, subcommands: []){ (view, args) -> CommandResult in
+                guard
+                    let w = Double(args[0]),
+                    let h = Double(args[1]),
+                    let l = Double(args[2]),
+                    let r = Double(args[3]),
+                    let name = args.last else
+                    { return .error(Command.invalidArguments)}
+                let node = SCNNode(geometry: SCNBox(width: CGFloat(w), height: CGFloat(h), length: CGFloat(l), chamferRadius: CGFloat(r)))
+                node.name = name
+                view.scene!.rootNode.addChildNode(node)
                 return .ok
             }
             
