@@ -9,7 +9,8 @@ class SceneKitConsole {
         self.commandProvider = commandProvider
     }
     
-    func run(command: String) {
+    func run(command: String) -> CommandResult {
+        guard let _ = sceneView.scene else { return .error("Scene has not been initialized!") }
         
     }
 }
