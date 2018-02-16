@@ -14,6 +14,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField.delegate = self
         console = SceneKitConsole(attachTo: sceneView, commandProvider: CommandProvider.Builder().addStandardCommands().build())
         scene.setup()
+        sceneView.scene = scene
+        sceneView.allowsCameraControl = true
+        sceneView.backgroundColor = .black
+        sceneView.showsStatistics = true
+        sceneView.backgroundColor = .black
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
