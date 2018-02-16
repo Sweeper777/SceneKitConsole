@@ -23,7 +23,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
-        console.run(command: textField.text!)
+        switch console.run(command: textField.text!) {
+        case .ok:
+            break
+        case .error(let msg):
+            let alert = UIAlertController(title: "Error", message: msg, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        case .output(let msg):
+            let alert = UIAlertController(title: "Output", message: msg, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
         return true
     }
 }
