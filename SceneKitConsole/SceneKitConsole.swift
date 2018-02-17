@@ -12,6 +12,16 @@ class SceneKitConsole {
     func run(command: String) -> CommandResult {
         guard let _ = sceneView.scene else { return .error("Scene has not been initialized!") }
         
+        let components = command.split(separator: " ").map { String($0) }
+        var commandToRun: Command?
+        for component in components {
+            let commandsToSearch = commandToRun?.subcommands ?? commandProvider.commands
+            if let i = commandsToSearch.index(where: { $0.name == component }) {
+                commandToRun = commandsToSearch[i]
+            } else {
+                break
+            }
+        }
     }
 }
 
