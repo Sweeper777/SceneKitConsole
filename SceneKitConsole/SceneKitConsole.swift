@@ -27,6 +27,7 @@ class SceneKitConsole {
         if components.count - 1 < argsCount {
             return .error(Command.missingArguments)
         }
+        return cmd.action(sceneView, Array(components.suffix(argsCount)))
     }
 }
 
