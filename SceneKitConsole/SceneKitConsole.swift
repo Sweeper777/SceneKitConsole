@@ -79,6 +79,11 @@ class CommandProvider {
             }
             
             let spawnSphere = Command(name: "sphere", argumentCount: 2, subcommands: []) { (view, args) -> CommandResult in
+                guard let r = Double(args[0]),
+                      let name = args.last else { return .error(Command.invalidArguments)}
+                let node = SCNNode(geometry: SCNSphere(radius: CGFloat(r)))
+                node.name = name
+                view.scene!.rootNode.addChildNode(node)
                 return .ok
             }
             
