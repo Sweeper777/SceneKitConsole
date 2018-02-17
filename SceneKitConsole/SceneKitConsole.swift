@@ -22,6 +22,11 @@ class SceneKitConsole {
                 break
             }
         }
+        guard let cmd = commandToRun else { return .error(Command.invalidCommand) }
+        guard let argsCount = cmd.argumentCount else { return .error(Command.invalidCommand) }
+        if components.count - 1 < argsCount {
+            return .error(Command.missingArguments)
+        }
     }
 }
 
