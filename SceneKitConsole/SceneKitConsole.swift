@@ -104,6 +104,14 @@ class CommandProvider {
                 node.position.z = z
                 return .ok
             }
+            let changePosition = Command(name: "change", argumentCount: 4, subcommands: []) { (view, args) -> CommandResult in
+                guard
+                    let x = Float(args[1]),
+                    let y = Float(args[2]),
+                    let z = Float(args[3]),
+                    let name = args.first else
+                { return .error(Command.invalidArguments)}
+                guard let node = view.scene?.rootNode.childNode(withName: name, recursively: true) else { return .error(Command.cannotFindNode) }
             return self
         }
         
