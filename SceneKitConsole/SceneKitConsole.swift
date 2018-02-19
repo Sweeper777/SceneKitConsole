@@ -90,6 +90,15 @@ class CommandProvider {
             let spawn = Command(name: "spawn", argumentCount: nil, subcommands: [spawnBox, spawnSphere], action:
                 {(_,_) in return .error(Command.missingArguments)})
             _ = addCommand(spawn)
+            
+            let setPosition = Command(name: "set", argumentCount: 4, subcommands: []) { (view, args) -> CommandResult in
+                guard
+                    let x = Float(args[1]),
+                    let y = Float(args[2]),
+                    let z = Float(args[3]),
+                    let name = args.first else
+                { return .error(Command.invalidArguments)}
+                guard let node = view.scene?.rootNode.childNode(withName: name, recursively: true) else { return .error(Command.cannotFindNode) }
             return self
         }
         
