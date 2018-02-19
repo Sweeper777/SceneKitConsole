@@ -112,6 +112,11 @@ class CommandProvider {
                     let name = args.first else
                 { return .error(Command.invalidArguments)}
                 guard let node = view.scene?.rootNode.childNode(withName: name, recursively: true) else { return .error(Command.cannotFindNode) }
+                node.position.x += x
+                node.position.y += y
+                node.position.z += z
+                return .ok
+            }
             return self
         }
         
