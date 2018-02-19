@@ -131,6 +131,12 @@ class CommandProvider {
                     let g = Float(args[2]),
                     let b = Float(args[3]) else
                 { return .error(Command.invalidArguments)}
+                let chosenColor = UIColor(red: CGFloat(r), green: CGFloat(g), blue: CGFloat(b), alpha: 1)
+                node.geometry?.firstMaterial?.diffuse.contents = chosenColor
+                return .ok
+            }
+            _ = addCommand(color)
+            
             return self
         }
         
