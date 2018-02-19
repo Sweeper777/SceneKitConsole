@@ -123,6 +123,14 @@ class CommandProvider {
                 return .output("\(node.position)")
             }
             _ = addCommand(position)
+            
+            let color = Command(name: "color", argumentCount: 4, subcommands: []) { (view, args) -> CommandResult in
+                guard let node = view.scene?.rootNode.childNode(withName: args[0], recursively: true) else { return .error(Command.cannotFindNode) }
+                guard
+                    let r = Float(args[1]),
+                    let g = Float(args[2]),
+                    let b = Float(args[3]) else
+                { return .error(Command.invalidArguments)}
             return self
         }
         
