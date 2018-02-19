@@ -117,6 +117,12 @@ class CommandProvider {
                 node.position.z += z
                 return .ok
             }
+            
+            let position = Command(name: "position", argumentCount: 1, subcommands: [changePosition, setPosition]) { (view, args) -> CommandResult in
+                guard let node = view.scene!.rootNode.childNode(withName: args[0], recursively: true) else { return .error(Command.cannotFindNode) }
+                return .output("\(node.position)")
+            }
+            _ = addCommand(position)
             return self
         }
         
