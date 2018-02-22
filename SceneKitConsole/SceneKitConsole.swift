@@ -146,6 +146,9 @@ class CommandProvider {
                 return .ok
             }
             _ = addCommand(light)
+            
+            let physicsType = Command(name: "type", argumentCount: 2, subcommands: []) { (view, args) -> CommandResult in
+                guard let node = view.scene?.rootNode.childNode(withName: args[0], recursively: true) else { return .error(Command.cannotFindNode) }
             return self
         }
         
