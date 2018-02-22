@@ -137,6 +137,8 @@ class CommandProvider {
             }
             _ = addCommand(color)
             
+            let light = Command(name: "light", argumentCount: 2, subcommands: []) { (view, args) -> CommandResult in
+                guard let node = view.scene?.rootNode.childNode(withName: args[0], recursively: true) else { return .error(Command.cannotFindNode) }
             return self
         }
         
