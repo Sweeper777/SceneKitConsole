@@ -156,6 +156,18 @@ class CommandProvider {
                         node.physicsBody = SCNPhysicsBody(type: type, shape: nil)
                     }
                 }
+                switch args[1] {
+                case "static":
+                    setNodePhysicsType(node, .static)
+                case "dynamic":
+                    setNodePhysicsType(node, .dynamic)
+                case "kinematic":
+                    setNodePhysicsType(node, .kinematic)
+                default:
+                    return .error(Command.invalidArguments)
+                }
+                return .ok
+            }
             return self
         }
         
