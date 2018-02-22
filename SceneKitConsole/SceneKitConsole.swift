@@ -168,6 +168,11 @@ class CommandProvider {
                 }
                 return .ok
             }
+            
+            let physics = Command(name: "physics", argumentCount: nil, subcommands: [physicsType]) { (_, _) -> CommandResult in
+                return .error(Command.missingArguments)
+            }
+            _ = addCommand(physics)
             return self
         }
         
