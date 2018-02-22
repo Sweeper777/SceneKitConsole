@@ -149,6 +149,13 @@ class CommandProvider {
             
             let physicsType = Command(name: "type", argumentCount: 2, subcommands: []) { (view, args) -> CommandResult in
                 guard let node = view.scene?.rootNode.childNode(withName: args[0], recursively: true) else { return .error(Command.cannotFindNode) }
+                func setNodePhysicsType(_ node: SCNNode, _ type: SCNPhysicsBodyType) {
+                    if let physics = node.physicsBody {
+                        physics.type = type
+                    } else {
+                        node.physicsBody = SCNPhysicsBody(type: type, shape: nil)
+                    }
+                }
             return self
         }
         
