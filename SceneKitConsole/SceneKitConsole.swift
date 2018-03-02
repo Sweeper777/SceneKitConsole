@@ -91,6 +91,13 @@ class CommandProvider {
                 {(_,_) in return .error(Command.missingArguments)})
             _ = addCommand(spawn)
             
+            let remove = Command(name: "remove", argumentCount: 1, subcommands: []) { (view, args) -> CommandResult in
+                guard let name = args.first else { return .error(Command.invalidArguments) }
+                guard let node = view.scene?.rootNode.childNode(withName: name, recursively: true) else { return .error(Command.cannotFindNode) }
+                node.removeFromParentNode()
+                return .ok
+            }
+            
             let setPosition = Command(name: "set", argumentCount: 4, subcommands: []) { (view, args) -> CommandResult in
                 guard
                     let x = Float(args[1]),
