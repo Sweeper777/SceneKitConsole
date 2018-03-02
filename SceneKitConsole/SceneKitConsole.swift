@@ -141,7 +141,14 @@ class CommandProvider {
                 return .ok
             }
             
-            let light = Command(name: "light", argumentCount: 2, subcommands: []) { (view, args) -> CommandResult in
+            let lightRemove = Command(name: "remove", argumentCount: 1, subcommands: []) { (view, args) -> CommandResult in
+                guard let name = args.first else { return .error(Command.invalidArguments) }
+                guard let node = view.scene?.rootNode.childNode(withName: name, recursively: true) else { return .error(Command.cannotFindNode) }
+                node.light = nil
+                return .ok
+            }
+            
+            let light = Command(name: "light", argumentCount: 2, subcommands: [lightRemove]) { (view, args) -> CommandResult in
                 guard let node = view.scene?.rootNode.childNode(withName: args[0], recursively: true) else { return .error(Command.cannotFindNode) }
                 let lightObj = node.light ?? SCNLight()
                 let lightType = SCNLight.LightType(rawValue: args[1])
