@@ -179,7 +179,14 @@ class CommandProvider {
                 return .ok
             }
             
-            let physics = Command(name: "physics", argumentCount: nil, subcommands: [physicsType]) { (_, _) -> CommandResult in
+            let physcisRemove = Command(name: "remove", argumentCount: 1, subcommands: []) { (view, args) -> CommandResult in
+                guard let name = args.first else { return .error(Command.invalidArguments) }
+                guard let node = view.scene?.rootNode.childNode(withName: name, recursively: true) else { return .error(Command.cannotFindNode) }
+                node.physicsBody = nil
+                return .ok
+            }
+            
+            let physics = Command(name: "physics", argumentCount: nil, subcommands: [physicsType, physcisRemove]) { (_, _) -> CommandResult in
                 return .error(Command.missingArguments)
             }
             return self
