@@ -89,7 +89,6 @@ class CommandProvider {
             
             let spawn = Command(name: "spawn", argumentCount: nil, subcommands: [spawnBox, spawnSphere], action:
                 {(_,_) in return .error(Command.missingArguments)})
-            _ = addCommand(spawn)
             
             let remove = Command(name: "remove", argumentCount: 1, subcommands: []) { (view, args) -> CommandResult in
                 guard let name = args.first else { return .error(Command.invalidArguments) }
@@ -129,7 +128,6 @@ class CommandProvider {
                 guard let node = view.scene!.rootNode.childNode(withName: args[0], recursively: true) else { return .error(Command.cannotFindNode) }
                 return .output("\(node.position)")
             }
-            _ = addCommand(position)
             
             let color = Command(name: "color", argumentCount: 4, subcommands: []) { (view, args) -> CommandResult in
                 guard let node = view.scene?.rootNode.childNode(withName: args[0], recursively: true) else { return .error(Command.cannotFindNode) }
@@ -142,7 +140,6 @@ class CommandProvider {
                 node.geometry?.firstMaterial?.diffuse.contents = chosenColor
                 return .ok
             }
-            _ = addCommand(color)
             
             let light = Command(name: "light", argumentCount: 2, subcommands: []) { (view, args) -> CommandResult in
                 guard let node = view.scene?.rootNode.childNode(withName: args[0], recursively: true) else { return .error(Command.cannotFindNode) }
@@ -152,7 +149,6 @@ class CommandProvider {
                 node.light = lightObj
                 return .ok
             }
-            _ = addCommand(light)
             
             let physicsType = Command(name: "type", argumentCount: 2, subcommands: []) { (view, args) -> CommandResult in
                 guard let node = view.scene?.rootNode.childNode(withName: args[0], recursively: true) else { return .error(Command.cannotFindNode) }
@@ -179,8 +175,13 @@ class CommandProvider {
             let physics = Command(name: "physics", argumentCount: nil, subcommands: [physicsType]) { (_, _) -> CommandResult in
                 return .error(Command.missingArguments)
             }
-            _ = addCommand(physics)
             return self
+                .addCommand(spawn)
+                .addCommand(remove)
+                .addCommand(position)
+                .addCommand(color)
+                .addCommand(light)
+                .addCommand(physics)
         }
         
         func build() -> CommandProvider {
