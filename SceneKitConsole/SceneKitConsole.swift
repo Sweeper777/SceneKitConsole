@@ -219,6 +219,16 @@ class CommandProvider {
                     let asImpulse = args.last
                     else { return .error(Command.invalidArguments) }
                 guard let node = view.scene?.rootNode.childNode(withName: name, recursively: true) else { return .error(Command.cannotFindNode) }
+                let vector = SCNVector4(x, y, z, w)
+                switch asImpulse {
+                case "impulse":
+                    node.physicsBody?.applyTorque(vector, asImpulse: true)
+                case "continuous":
+                    node.physicsBody?.applyTorque(vector, asImpulse: false)
+                default:
+                    return .error(Command.invalidArguments)
+                }
+                return .ok
             }
             return self
                 .addCommand(spawn)
