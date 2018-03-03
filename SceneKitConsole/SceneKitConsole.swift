@@ -247,6 +247,9 @@ class CommandProvider {
                 .addCommand(color)
                 .addCommand(light)
                 .addCommand(physics)
+                .addCommand(force)
+                .addCommand(torque)
+                .addCommand(gravity)
         }
         
         func build() -> CommandProvider {
