@@ -230,6 +230,14 @@ class CommandProvider {
                 }
                 return .ok
             }
+            
+            let gravity = Command(name: "gravity", argumentCount: 3, subcommands: []) { (view, args) -> CommandResult in
+                guard
+                    let x = Double(args[0]),
+                    let y = Double(args[1]),
+                    let z = Double(args[2])
+                    else { return .error(Command.invalidArguments) }
+            }
             return self
                 .addCommand(spawn)
                 .addCommand(remove)
