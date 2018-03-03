@@ -237,6 +237,8 @@ class CommandProvider {
                     let y = Double(args[1]),
                     let z = Double(args[2])
                     else { return .error(Command.invalidArguments) }
+                view.scene?.physicsWorld.gravity = SCNVector3(x,y,z)
+                return .ok
             }
             return self
                 .addCommand(spawn)
