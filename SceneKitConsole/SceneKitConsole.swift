@@ -209,6 +209,17 @@ class CommandProvider {
                 }
                 return .ok
             }
+            let torque = Command(name: "torque", argumentCount: 6, subcommands: []) { (view, args) -> CommandResult in
+                guard
+                    let name = args.first,
+                    let x = Double(args[1]),
+                    let y = Double(args[2]),
+                    let z = Double(args[3]),
+                    let w = Double(args[4]),
+                    let asImpulse = args.last
+                    else { return .error(Command.invalidArguments) }
+                guard let node = view.scene?.rootNode.childNode(withName: name, recursively: true) else { return .error(Command.cannotFindNode) }
+            }
             return self
                 .addCommand(spawn)
                 .addCommand(remove)
