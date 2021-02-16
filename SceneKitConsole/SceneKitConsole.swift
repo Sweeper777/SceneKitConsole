@@ -74,6 +74,7 @@ class CommandProvider {
                     { return .error(Command.invalidArguments)}
                 let node = SCNNode(geometry: SCNBox(width: CGFloat(w), height: CGFloat(h), length: CGFloat(l), chamferRadius: CGFloat(r)))
                 node.name = name
+                node.geometry?.firstMaterial = Materials.blue
                 view.scene!.rootNode.addChildNode(node)
                 return .ok
             }
@@ -83,6 +84,7 @@ class CommandProvider {
                       let name = args.last else { return .error(Command.invalidArguments)}
                 let node = SCNNode(geometry: SCNSphere(radius: CGFloat(r)))
                 node.name = name
+                node.geometry?.firstMaterial = Materials.yellow
                 view.scene!.rootNode.addChildNode(node)
                 return .ok
             }
