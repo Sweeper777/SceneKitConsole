@@ -257,3 +257,19 @@ class CommandProvider {
         }
     }
 }
+
+class Materials {
+    static let yellow: SCNMaterial = {
+        var m = SCNMaterial()
+        m.diffuse.contents = UIColor.yellow
+        m.lightingModel = .blinn
+        return m
+    }()
+    
+    static let blue: SCNMaterial = {
+        var m = SCNMaterial()
+        m.diffuse.contents = UIColor.blue
+        m.lightingModel = .blinn
+        return m
+    }()
+}
