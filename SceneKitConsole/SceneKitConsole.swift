@@ -243,11 +243,32 @@ class CommandProvider {
                 return .ok
             }
 
-            let camera = Command(name: "camera", argumentCount: 0, subcommands: []) { (view, args) -> CommandResult in
+            let camera = Command(name: "camera", argumentCount: 2, subcommands: []) { (view, args) -> CommandResult in
+                let delta: Float
+                if args[1] == "+" {
+                    delta = 0.4
+                } else if args[1] == "-" {
+                    delta = -0.4
+                } else {
+                    return .error("Invalid Sign!")
+                }
+                let block: () -> Void
+                switch args[0] {
+                case "x":
+                    block = { view.pointOfView?.eulerAngles.x += delta }
+                case "y":
+                    block = { view.pointOfView?.eulerAngles.y += delta }
+                case "z":
+                    block = { view.pointOfView?.eulerAngles.z += delta }
+                default:
+                    return .error("Invalid Dimension!")
+                }
+
                 SCNTransaction.begin()
                 SCNTransaction.animationDuration = 0.5
-                view.pointOfView?.eulerAngles.x += 0.4
+                block()
                 SCNTransaction.commit()
+                view.setNeedsDisplay()
                 return .ok
             }
 
