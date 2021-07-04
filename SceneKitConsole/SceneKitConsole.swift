@@ -244,6 +244,11 @@ class CommandProvider {
             }
 
             let camera = Command(name: "camera", argumentCount: 2, subcommands: []) { (view, args) -> CommandResult in
+                if args[0] == "control" {
+                    view.allowsCameraControl.toggle()
+                    return .output("Camera control is now \(view.allowsCameraControl ? "enabled" : "disabled")")
+                }
+
                 let delta: Float
                 if args[1] == "+" {
                     delta = 0.4

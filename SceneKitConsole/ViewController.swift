@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         console = SceneKitConsole(attachTo: sceneView, commandProvider: CommandProvider.Builder().addStandardCommands().build())
         scene.setup()
         sceneView.scene = scene
-//        sceneView.allowsCameraControl = true
+        sceneView.allowsCameraControl = true
         sceneView.autoenablesDefaultLighting = true
         sceneView.backgroundColor = .black
         sceneView.showsStatistics = true
