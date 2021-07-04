@@ -242,6 +242,15 @@ class CommandProvider {
                 view.scene?.physicsWorld.gravity = SCNVector3(x,y,z)
                 return .ok
             }
+
+            let camera = Command(name: "camera", argumentCount: 0, subcommands: []) { (view, args) -> CommandResult in
+                SCNTransaction.begin()
+                SCNTransaction.animationDuration = 0.5
+                view.pointOfView?.eulerAngles.x += 0.4
+                SCNTransaction.commit()
+                return .ok
+            }
+
             return self
                 .addCommand(spawn)
                 .addCommand(remove)
@@ -252,6 +261,7 @@ class CommandProvider {
                 .addCommand(force)
                 .addCommand(torque)
                 .addCommand(gravity)
+                .addCommand(camera)
         }
         
         func build() -> CommandProvider {
