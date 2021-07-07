@@ -273,7 +273,6 @@ class CommandProvider {
                 SCNTransaction.animationDuration = 0.5
                 block()
                 SCNTransaction.commit()
-                view.setNeedsDisplay()
                 return .ok
             }
 
