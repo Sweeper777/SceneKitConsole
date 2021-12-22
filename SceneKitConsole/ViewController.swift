@@ -16,6 +16,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         scene.setup()
         let image = UIImage(named: "my_image")!
         scene.background.contents = image
+        scene.background.wrapS = .clampToBorder
+        scene.background.wrapT = .clampToBorder
+        let aspect = image.size.width / image.size.height
+        let ratio = view.frame.height / view.frame.width * aspect
+        scene.background.contentsTransform = SCNMatrix4MakeScale(1, Float(ratio), 1)
         sceneView.scene = scene
         sceneView.autoenablesDefaultLighting = true
         sceneView.backgroundColor = .black
