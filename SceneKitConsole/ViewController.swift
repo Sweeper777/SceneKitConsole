@@ -14,6 +14,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField.delegate = self
         console = SceneKitConsole(attachTo: sceneView, commandProvider: CommandProvider.Builder().addStandardCommands().build())
         scene.setup()
+        let image = UIImage(named: "my_image")!
+        scene.background.contents = image
         sceneView.scene = scene
         sceneView.autoenablesDefaultLighting = true
         sceneView.backgroundColor = .black
